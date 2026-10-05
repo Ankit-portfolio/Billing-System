@@ -1,0 +1,5170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kanoria Traders | Electric Scooty Billing</title>
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --primary:#536dfe;
+    --primary-dark:#304ffe;
+    --secondary:#00c853;
+    --cyan:#00b8d4;
+    --orange:#ff9100;
+    --pink:#ff4081;
+    --purple:#7c4dff;
+
+    --dark:#182033;
+    --text:#344054;
+    --muted:#667085;
+
+    --bg:#f3f7ff;
+    --card:#ffffff;
+    --border:#e4e9f2;
+
+    --danger:#ff3d57;
+
+    --shadow:
+        0 18px 50px rgba(38,67,125,.12);
+
+    --radius:18px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+    margin:0;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color:var(--dark);
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            #dbe7ff 0,
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            #d7fff0 0,
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #f7f9ff,
+            #eef5ff
+        );
+
+    min-height:100vh;
+}
+
+
+/* =========================================================
+   ANIMATED BACKGROUND
+========================================================= */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    filter:blur(70px);
+
+    opacity:.28;
+
+    z-index:-1;
+
+    animation:
+        floatingBlob 10s ease-in-out infinite;
+}
+
+
+body::before{
+    background:#536dfe;
+
+    left:-100px;
+    top:25%;
+}
+
+
+body::after{
+    background:#00c853;
+
+    right:-100px;
+    bottom:10%;
+
+    animation-delay:2s;
+}
+
+
+@keyframes floatingBlob{
+
+    0%,100%{
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translate(40px,-30px)
+            scale(1.15);
+    }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:50;
+
+    padding:
+        13px
+        22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    background:
+        rgba(255,255,255,.88);
+
+    backdrop-filter:
+        blur(20px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.7);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.05);
+
+}
+
+
+.logo-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+.logo{
+
+    width:50px;
+
+    height:50px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:15px;
+
+    color:white;
+
+    font-weight:900;
+
+    font-size:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--purple),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(83,109,254,.35);
+
+    animation:
+        logoPulse 3s ease-in-out infinite;
+
+}
+
+
+@keyframes logoPulse{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-3px);
+    }
+
+}
+
+
+.logo-text h1{
+
+    margin:0;
+
+    font-size:21px;
+
+    letter-spacing:.2px;
+
+}
+
+
+.logo-text span{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+
+.header-actions{
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button{
+
+    border:0;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    border-radius:11px;
+
+    padding:
+        11px
+        15px;
+
+    font-weight:700;
+
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        filter .2s;
+
+}
+
+
+button:hover{
+
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.03);
+
+    box-shadow:
+        0 9px 25px
+        rgba(0,0,0,.12);
+
+}
+
+
+button:active{
+
+    transform:
+        scale(.97);
+
+}
+
+
+.primary{
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--purple)
+        );
+
+}
+
+
+.green{
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00bfa5,
+            #00c853
+        );
+
+}
+
+
+.gray{
+
+    color:#344054;
+
+    background:
+        #edf2f8;
+
+}
+
+
+.red{
+
+    color:#d32f2f;
+
+    background:#ffebee;
+
+}
+
+
+.orange{
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6d00,
+            #ffab00
+        );
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container{
+
+    width:
+        min(
+            1080px,
+            calc(100% - 28px)
+        );
+
+    margin:
+        28px auto 70px;
+
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.form-card{
+
+    background:
+        rgba(255,255,255,.94);
+
+    border:
+        1px solid
+        rgba(255,255,255,.8);
+
+    border-radius:
+        24px;
+
+    padding:
+        28px;
+
+    box-shadow:
+        var(--shadow);
+
+    animation:
+        cardEntrance .6s ease;
+
+}
+
+
+@keyframes cardEntrance{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(25px)
+            scale(.98);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+.form-title{
+
+    margin-bottom:28px;
+
+}
+
+
+.form-title h2{
+
+    margin:
+        0 0 7px;
+
+    font-size:27px;
+
+}
+
+
+.form-title p{
+
+    margin:0;
+
+    color:var(--muted);
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section{
+
+    margin-top:27px;
+
+    padding-top:23px;
+
+    border-top:
+        1px solid
+        #edf0f5;
+
+}
+
+
+.section:first-of-type{
+
+    padding-top:0;
+
+    border-top:0;
+
+}
+
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:17px;
+
+}
+
+
+.section-number{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:11px;
+
+    display:grid;
+
+    place-items:center;
+
+    color:white;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--purple)
+        );
+
+    box-shadow:
+        0 7px 18px
+        rgba(83,109,254,.25);
+
+}
+
+
+.section-title h3{
+
+    margin:0;
+
+    font-size:18px;
+
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
+
+}
+
+
+.full{
+
+    grid-column:
+        1/-1;
+
+}
+
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+}
+
+
+label{
+
+    font-size:12px;
+
+    font-weight:800;
+
+    color:#596579;
+
+}
+
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        11px;
+
+    padding:
+        12px 13px;
+
+    outline:none;
+
+    background:
+        rgba(255,255,255,.95);
+
+    color:var(--dark);
+
+    font-size:14px;
+
+    transition:
+        border .2s,
+        box-shadow .2s,
+        transform .2s;
+
+}
+
+
+input:hover,
+textarea:hover,
+select:hover{
+
+    border-color:
+        #b7c3d8;
+
+}
+
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(83,109,254,.10);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+textarea{
+
+    resize:vertical;
+
+    min-height:90px;
+
+}
+
+
+/* =========================================================
+   STATE SELECT
+========================================================= */
+
+.state-box{
+
+    position:relative;
+
+}
+
+
+.state-code{
+
+    position:absolute;
+
+    right:10px;
+
+    bottom:9px;
+
+    padding:
+        4px 8px;
+
+    border-radius:7px;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    color:
+        var(--primary);
+
+    background:
+        #eef1ff;
+
+    pointer-events:none;
+
+}
+
+
+/* =========================================================
+   GOODS AREA
+========================================================= */
+
+.goods-card{
+
+    margin-top:14px;
+
+    padding:18px;
+
+    border-radius:17px;
+
+    border:
+        1px solid
+        #e2e8f4;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8faff,
+            #ffffff
+        );
+
+    box-shadow:
+        0 7px 25px
+        rgba(31,55,100,.05);
+
+    animation:
+        goodsEntrance .4s ease;
+
+}
+
+
+@keyframes goodsEntrance{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(12px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+.goods-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+}
+
+
+.goods-title strong{
+
+    font-size:15px;
+
+}
+
+
+.goods-badge{
+
+    padding:
+        5px 9px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--orange),
+            var(--pink)
+        );
+
+}
+
+
+.goods-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+
+}
+
+
+.amount-box{
+
+    margin-top:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:12px 14px;
+
+    border-radius:11px;
+
+    color:#155724;
+
+    background:
+        #eafff1;
+
+    border:
+        1px solid
+        #c8f5d6;
+
+}
+
+
+.remove-product{
+
+    margin-top:14px;
+
+}
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.submit-area{
+
+    margin-top:30px;
+
+    padding-top:22px;
+
+    border-top:
+        1px solid
+        #e7ebf1;
+
+}
+
+
+.submit-btn{
+
+    width:100%;
+
+    padding:
+        17px;
+
+    font-size:16px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            100deg,
+            #536dfe,
+            #7c4dff,
+            #00b8d4,
+            #536dfe
+        );
+
+    background-size:
+        300% 100%;
+
+    animation:
+        gradientMove 5s ease infinite;
+
+}
+
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+
+.hint{
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:10px;
+
+}
+
+
+/* =========================================================
+   CUSTOM ALERT / TOAST
+========================================================= */
+
+#toastContainer{
+
+    position:fixed;
+
+    top:78px;
+
+    right:20px;
+
+    z-index:9999;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    width:
+        min(
+            370px,
+            calc(100% - 30px)
+        );
+
+}
+
+
+.toast{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    padding:
+        14px;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.97);
+
+    border:
+        1px solid
+        #e3e8f1;
+
+    box-shadow:
+        0 15px 45px
+        rgba(18,35,65,.18);
+
+    animation:
+        toastIn .45s
+        cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+.toast.hide{
+
+    animation:
+        toastOut .35s
+        ease forwards;
+
+}
+
+
+@keyframes toastIn{
+
+    from{
+        opacity:0;
+        transform:
+            translateX(120%)
+            scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateX(0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes toastOut{
+
+    to{
+        opacity:0;
+        transform:
+            translateX(120%)
+            scale(.9);
+    }
+
+}
+
+
+.toast-icon{
+
+    width:35px;
+
+    height:35px;
+
+    flex:none;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:10px;
+
+    font-size:18px;
+
+}
+
+
+.toast.success
+.toast-icon{
+
+    background:#dcffe9;
+
+}
+
+
+.toast.error
+.toast-icon{
+
+    background:#ffe4e8;
+
+}
+
+
+.toast.warning
+.toast-icon{
+
+    background:#fff0d4;
+
+}
+
+
+.toast.info
+.toast-icon{
+
+    background:#e3edff;
+
+}
+
+
+.toast-content{
+
+    flex:1;
+
+}
+
+
+.toast-title{
+
+    font-size:13px;
+
+    font-weight:900;
+
+    margin-bottom:3px;
+
+}
+
+
+.toast-message{
+
+    font-size:12px;
+
+    color:var(--muted);
+
+    line-height:1.45;
+
+}
+
+
+.toast-close{
+
+    padding:0;
+
+    background:none;
+
+    box-shadow:none;
+
+    color:#98a2b3;
+
+    font-size:17px;
+
+}
+
+
+.toast-progress{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    height:3px;
+
+    width:100%;
+
+    transform-origin:left;
+
+    animation:
+        toastProgress
+        4s linear forwards;
+
+}
+
+
+@keyframes toastProgress{
+
+    from{
+        transform:scaleX(1);
+    }
+
+    to{
+        transform:scaleX(0);
+    }
+
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.preview-modal,
+.saved-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:500;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px;
+
+    background:
+        rgba(8,20,40,.78);
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+.preview-modal.show,
+.saved-modal.show{
+
+    display:flex;
+
+    animation:
+        modalFade .25s ease;
+
+}
+
+
+@keyframes modalFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+.preview-window,
+.saved-window{
+
+    width:
+        min(
+            1200px,
+            100%
+        );
+
+    height:94vh;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    background:#eef1f6;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.3);
+
+    animation:
+        modalUp .35s ease;
+
+}
+
+
+@keyframes modalUp{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(30px)
+            scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+.preview-header,
+.saved-header{
+
+    padding:
+        12px 16px;
+
+    background:white;
+
+    border-bottom:
+        1px solid
+        #ddd;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.preview-actions{
+
+    display:flex;
+
+    gap:7px;
+
+}
+
+
+.preview-content{
+
+    overflow:auto;
+
+    height:
+        calc(100% - 62px);
+
+    padding:25px;
+
+}
+
+
+/* =========================================================
+   INVOICE
+========================================================= */
+
+.invoice{
+
+    width:210mm;
+
+    min-height:297mm;
+
+    margin:0 auto;
+
+    background:#fff;
+
+    color:#111;
+
+    border:
+        1px solid #111;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+}
+
+
+.invoice-header{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1.5fr 1fr;
+
+    border-bottom:
+        1px solid #111;
+
+}
+
+
+.invoice-header > div{
+
+    padding:9px;
+
+    min-height:90px;
+
+    border-right:
+        1px solid #111;
+
+    font-size:11px;
+
+}
+
+
+.invoice-header > div:last-child{
+
+    border-right:0;
+
+}
+
+
+.company{
+
+    text-align:center;
+
+}
+
+
+.company strong{
+
+    display:block;
+
+    font-size:22px;
+
+    margin:12px 0 5px;
+
+}
+
+
+.customer{
+
+    display:grid;
+
+    grid-template-columns:
+        1.4fr 1fr;
+
+    border-bottom:
+        1px solid #111;
+
+}
+
+
+.customer > div{
+
+    padding:9px;
+
+    min-height:130px;
+
+    border-right:
+        1px solid #111;
+
+    font-size:11px;
+
+}
+
+
+.customer > div:last-child{
+
+    border-right:0;
+
+}
+
+
+.line{
+
+    display:flex;
+
+    gap:8px;
+
+    margin:6px 0;
+
+}
+
+
+.line b{
+
+    min-width:90px;
+
+}
+
+
+.invoice table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    font-size:10.5px;
+
+}
+
+
+.invoice th,
+.invoice td{
+
+    border:
+        1px solid #111;
+
+    padding:7px;
+
+}
+
+
+.invoice th{
+
+    background:#f0f2f5;
+
+    text-align:center;
+
+}
+
+
+.center{
+
+    text-align:center;
+
+}
+
+
+.right{
+
+    text-align:right;
+
+}
+
+
+.product-space td{
+
+    height:120px;
+
+}
+
+
+.summary{
+
+    display:grid;
+
+    grid-template-columns:
+        1.35fr .65fr;
+
+}
+
+
+.amount-words{
+
+    padding:10px;
+
+    min-height:115px;
+
+    border-right:
+        1px solid #111;
+
+    font-size:11px;
+
+}
+
+
+.terms{
+
+    display:grid;
+
+    grid-template-columns:
+        1.25fr .75fr;
+
+    border-top:
+        1px solid #111;
+
+}
+
+
+.terms-text{
+
+    padding:10px;
+
+    font-size:10px;
+
+    line-height:1.6;
+
+}
+
+
+.signature{
+
+    border-left:
+        1px solid #111;
+
+    padding:10px;
+
+    text-align:center;
+
+}
+
+
+.signature-space{
+
+    height:65px;
+
+}
+
+
+.invoice-footer{
+
+    border-top:
+        1px solid #111;
+
+    text-align:center;
+
+    padding:7px;
+
+    font-size:9px;
+
+}
+
+
+/* =========================================================
+   SAVED BILLS
+========================================================= */
+
+.saved-body{
+
+    padding:18px;
+
+    height:
+        calc(100% - 70px);
+
+    overflow:auto;
+
+}
+
+
+.search-bar{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 170px 170px;
+
+    gap:8px;
+
+    margin-bottom:15px;
+
+}
+
+
+.saved-table-wrap{
+
+    overflow:auto;
+
+}
+
+
+.saved-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:850px;
+
+    font-size:12px;
+
+}
+
+
+.saved-table th,
+.saved-table td{
+
+    padding:10px;
+
+    border-bottom:
+        1px solid #e6e9ee;
+
+    text-align:left;
+
+}
+
+
+.saved-table th{
+
+    background:#f5f7fa;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:750px){
+
+    .header{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+    }
+
+
+    .header-actions{
+
+        width:100%;
+
+    }
+
+
+    .header-actions button{
+
+        flex:1;
+
+    }
+
+
+    .container{
+
+        width:
+            calc(100% - 16px);
+
+    }
+
+
+    .form-card{
+
+        padding:18px;
+
+        border-radius:18px;
+
+    }
+
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .goods-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .full{
+
+        grid-column:auto;
+
+    }
+
+
+    .search-bar{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .preview-content{
+
+        padding:8px;
+
+    }
+
+
+    .preview-header{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+    }
+
+
+    .preview-actions{
+
+        width:100%;
+
+    }
+
+
+    .preview-actions button{
+
+        flex:1;
+
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    body *{
+
+        visibility:hidden;
+
+    }
+
+
+    #printArea,
+    #printArea *{
+
+        visibility:visible;
+
+    }
+
+
+    #printArea{
+
+        position:absolute;
+
+        left:0;
+
+        top:0;
+
+        width:100%;
+
+    }
+
+
+    .invoice{
+
+        margin:0;
+
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="logo-area">
+
+        <div class="logo">
+            KT
+        </div>
+
+        <div class="logo-text">
+
+            <h1>
+                Kanoria Traders
+            </h1>
+
+            <span>
+                Electric Scooty Billing System
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="header-actions">
+
+        <button
+            class="gray"
+            onclick="openSavedBills()">
+
+            🗂 Saved Bills
+
+        </button>
+
+
+        <button
+            class="green"
+            onclick="newBill()">
+
+            ＋ New Bill
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     TOAST CONTAINER
+===================================================== -->
+
+<div id="toastContainer"></div>
+
+
+<!-- =====================================================
+     MAIN BILL FORM
+===================================================== -->
+
+<main class="container">
+
+<div class="form-card">
+
+
+    <div class="form-title">
+
+        <h2>
+            🧾 Create New Bill
+        </h2>
+
+        <p>
+            Enter customer, vehicle and GST details.
+            Invoice preview will open after submission.
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         BILL DETAILS
+    ================================================== -->
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <div class="section-number">
+                1
+            </div>
+
+            <h3>
+                Bill Details
+            </h3>
+
+        </div>
+
+
+        <div class="grid">
+
+            <div class="field">
+
+                <label>
+                    Invoice Number
+                </label>
+
+                <input
+                    id="invoiceNo"
+                    readonly>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Bill Date *
+                </label>
+
+                <input
+                    id="billDate"
+                    type="date">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    P.O. Number
+                </label>
+
+                <input
+                    id="poNo"
+                    placeholder="Optional">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Place of Supply
+                </label>
+
+                <input
+                    id="place"
+                    value="Haryana"
+                    readonly>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CUSTOMER DETAILS
+    ================================================== -->
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <div class="section-number">
+                2
+            </div>
+
+            <h3>
+                Customer Details
+            </h3>
+
+        </div>
+
+
+        <div class="grid">
+
+            <div class="field full">
+
+                <label>
+                    Customer Name *
+                </label>
+
+                <input
+                    id="customerName"
+                    placeholder="Enter full customer name">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Mobile Number
+                </label>
+
+                <input
+                    id="customerMobile"
+                    maxlength="10"
+                    inputmode="numeric"
+                    placeholder="10 digit mobile number">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Customer GSTIN
+                </label>
+
+                <input
+                    id="customerGSTIN"
+                    maxlength="15"
+                    placeholder="Optional">
+
+            </div>
+
+
+            <div class="field full">
+
+                <label>
+                    Customer Address
+                </label>
+
+                <textarea
+                    id="customerAddress"
+                    placeholder="Enter complete customer address"></textarea>
+
+            </div>
+
+
+            <!-- STATE -->
+
+            <div class="field">
+
+                <label>
+                    State *
+                </label>
+
+                <div class="state-box">
+
+                    <select
+                        id="customerState"
+                        onchange="stateSelected()">
+
+                    </select>
+
+                    <div
+                        class="state-code"
+                        id="stateCodeBadge">
+
+                        Code: 06
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    GST State Code
+                </label>
+
+                <input
+                    id="stateCode"
+                    value="06"
+                    readonly>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         GOODS
+    ================================================== -->
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <div class="section-number">
+                3
+            </div>
+
+            <h3>
+                Electric Scooty / Goods Details
+            </h3>
+
+        </div>
+
+
+        <div id="products"></div>
+
+
+        <button
+            type="button"
+            class="orange"
+            onclick="addProduct()">
+
+            ＋ Add Another Scooty / Product
+
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         GST
+    ================================================== -->
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <div class="section-number">
+                4
+            </div>
+
+            <h3>
+                GST & Payment Details
+            </h3>
+
+        </div>
+
+
+        <div class="grid">
+
+            <div class="field">
+
+                <label>
+                    GST %
+                </label>
+
+                <input
+                    id="gst"
+                    type="number"
+                    value="5"
+                    step=".01">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Discount ₹
+                </label>
+
+                <input
+                    id="discount"
+                    type="number"
+                    value="0"
+                    step=".01">
+
+            </div>
+
+
+            <div class="field full">
+
+                <label>
+                    Tax Type
+                </label>
+
+                <select id="taxType">
+
+                    <option value="intra">
+                        CGST + SGST
+                    </option>
+
+                    <option value="inter">
+                        IGST
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TERMS
+    ================================================== -->
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <div class="section-number">
+                5
+            </div>
+
+            <h3>
+                Terms & Conditions
+            </h3>
+
+        </div>
+
+
+        <textarea id="notes">1. All Subject to Rewari Jurisdiction.
+2. Warranty only as per manufacturer terms.
+3. Goods once sold will not be taken back.
+4. E. & O. E.</textarea>
+
+    </div>
+
+
+    <!-- =================================================
+         SUBMIT
+    ================================================== -->
+
+    <div class="submit-area">
+
+        <button
+            class="submit-btn"
+            onclick="submitBill()">
+
+            ✓ Submit Bill & Preview Invoice
+
+        </button>
+
+
+        <div class="hint">
+
+            Your bill will be saved automatically
+            before preview.
+
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+
+<!-- =====================================================
+     PREVIEW MODAL
+===================================================== -->
+
+<div
+    id="previewModal"
+    class="preview-modal">
+
+    <div class="preview-window">
+
+
+        <div class="preview-header">
+
+            <strong>
+                🧾 Invoice Preview
+            </strong>
+
+
+            <div class="preview-actions">
+
+                <button
+                    class="green"
+                    onclick="printBill()">
+
+                    🖨 Print / Save PDF
+
+                </button>
+
+
+                <button
+                    class="gray"
+                    onclick="closePreview()">
+
+                    ✕ Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="previewContent"
+            class="preview-content">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SAVED BILLS MODAL
+===================================================== -->
+
+<div
+    id="savedModal"
+    class="saved-modal">
+
+    <div class="saved-window">
+
+
+        <div class="saved-header">
+
+            <div>
+
+                <strong>
+                    🗂 All Saved Bills
+                </strong>
+
+                <div
+                    style="
+                    font-size:11px;
+                    color:#667085;
+                    margin-top:4px;
+                    ">
+
+                    Stored locally on this device
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="gray"
+                onclick="closeSavedBills()">
+
+                ✕ Close
+
+            </button>
+
+        </div>
+
+
+        <div class="saved-body">
+
+            <div class="search-bar">
+
+                <input
+                    id="searchBill"
+                    placeholder="🔎 Search invoice, customer, mobile or vehicle"
+                    oninput="renderSavedBills()">
+
+
+                <input
+                    id="fromDate"
+                    type="date"
+                    onchange="renderSavedBills()">
+
+
+                <input
+                    id="toDate"
+                    type="date"
+                    onchange="renderSavedBills()">
+
+            </div>
+
+
+            <div class="saved-table-wrap">
+
+                <table class="saved-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Invoice
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Mobile
+                            </th>
+
+                            <th>
+                                Goods
+                            </th>
+
+                            <th>
+                                Total
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="savedBillsTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   BASIC HELPERS
+========================================================= */
+
+const STORAGE_KEY =
+    "kanoria_traders_bills_v3";
+
+
+let products = [];
+
+
+function $(id){
+
+    return document.getElementById(id);
+
+}
+
+
+function today(){
+
+    const d =
+        new Date();
+
+    const offset =
+        d.getTimezoneOffset();
+
+    return new Date(
+        d -
+        offset * 60000
+    )
+    .toISOString()
+    .slice(0,10);
+
+}
+
+
+function money(value){
+
+    return Number(
+        value || 0
+    ).toLocaleString(
+        "en-IN",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
+
+}
+
+
+function rupee(value){
+
+    return "₹" +
+        money(value);
+
+}
+
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;");
+
+}
+
+
+function dateFormat(date){
+
+    if(!date)
+        return "";
+
+    const p =
+        date.split("-");
+
+    return `${p[2]}-${p[1]}-${p[0]}`;
+
+}
+
+
+/* =========================================================
+   ANIMATED ALERTS
+========================================================= */
+
+function showToast(
+    message,
+    type="info",
+    title=""
+){
+
+    const container =
+        $("toastContainer");
+
+
+    const icons = {
+
+        success:"✓",
+
+        error:"✕",
+
+        warning:"!",
+
+        info:"i"
+
+    };
+
+
+    const titles = {
+
+        success:"Success",
+
+        error:"Something went wrong",
+
+        warning:"Please check",
+
+        info:"Information"
+
+    };
+
+
+    const toast =
+        document.createElement(
+            "div"
+        );
+
+
+    toast.className =
+        `toast ${type}`;
+
+
+    toast.innerHTML = `
+
+        <div class="toast-icon">
+
+            ${icons[type] || "i"}
+
+        </div>
+
+
+        <div class="toast-content">
+
+            <div class="toast-title">
+
+                ${escapeHTML(
+                    title ||
+                    titles[type]
+                )}
+
+            </div>
+
+            <div class="toast-message">
+
+                ${escapeHTML(
+                    message
+                )}
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="toast-close"
+            onclick="closeToast(this)">
+
+            ×
+
+        </button>
+
+
+        <div
+            class="toast-progress"
+            style="
+            background:
+            ${
+                type === "error"
+                ? "#ff3d57"
+                :
+                type === "warning"
+                ? "#ff9100"
+                :
+                type === "success"
+                ? "#00c853"
+                :
+                "#536dfe"
+            };
+            ">
+
+        </div>
+
+    `;
+
+
+    container.appendChild(
+        toast
+    );
+
+
+    setTimeout(
+        ()=>{
+            closeToast(
+                toast.querySelector(
+                    ".toast-close"
+                )
+            );
+        },
+        4000
+    );
+
+}
+
+
+function closeToast(button){
+
+    const toast =
+        button.closest(
+            ".toast"
+        );
+
+
+    if(!toast)
+        return;
+
+
+    toast.classList.add(
+        "hide"
+    );
+
+
+    setTimeout(
+        ()=>{
+            toast.remove();
+        },
+        350
+    );
+
+}
+
+
+/* =========================================================
+   INDIAN STATES / UT
+========================================================= */
+
+const states = [
+
+    ["Andhra Pradesh","37"],
+    ["Arunachal Pradesh","12"],
+    ["Assam","18"],
+    ["Bihar","10"],
+    ["Chhattisgarh","22"],
+    ["Goa","30"],
+    ["Gujarat","24"],
+    ["Haryana","06"],
+    ["Himachal Pradesh","02"],
+    ["Jharkhand","20"],
+    ["Karnataka","29"],
+    ["Kerala","32"],
+    ["Madhya Pradesh","23"],
+    ["Maharashtra","27"],
+    ["Manipur","14"],
+    ["Meghalaya","17"],
+    ["Mizoram","15"],
+    ["Nagaland","13"],
+    ["Odisha","21"],
+    ["Punjab","03"],
+    ["Rajasthan","08"],
+    ["Sikkim","11"],
+    ["Tamil Nadu","33"],
+    ["Telangana","36"],
+    ["Tripura","16"],
+    ["Uttar Pradesh","09"],
+    ["Uttarakhand","05"],
+    ["West Bengal","19"],
+
+    ["Andaman and Nicobar Islands","35"],
+    ["Chandigarh","04"],
+    ["Dadra and Nagar Haveli and Daman and Diu","26"],
+    ["Delhi","07"],
+    ["Jammu and Kashmir","01"],
+    ["Ladakh","38"],
+    ["Lakshadweep","31"],
+    ["Puducherry","34"]
+
+];
+
+
+function loadStates(){
+
+    const select =
+        $("customerState");
+
+
+    select.innerHTML = `
+
+        <option value="">
+            Select State / UT
+        </option>
+
+    `;
+
+
+    states.forEach(
+        state=>{
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                state[0];
+
+
+            option.dataset.code =
+                state[1];
+
+
+            option.textContent =
+                `${state[0]} — ${state[1]}`;
+
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+
+    select.value =
+        "Haryana";
+
+
+    stateSelected();
+
+}
+
+
+function stateSelected(){
+
+    const select =
+        $("customerState");
+
+
+    const option =
+        select.options[
+            select.selectedIndex
+        ];
+
+
+    if(!option)
+        return;
+
+
+    const code =
+        option.dataset.code || "";
+
+
+    $("stateCode").value =
+        code;
+
+
+    $("stateCodeBadge").textContent =
+        code
+        ?
+        `Code: ${code}`
+        :
+        "Code: —";
+
+
+    if(code){
+
+        showToast(
+            `${option.value} selected. GST state code automatically set to ${code}.`,
+            "success",
+            "State Selected"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+function getBills(){
+
+    return JSON.parse(
+        localStorage.getItem(
+            STORAGE_KEY
+        ) || "[]"
+    );
+
+}
+
+
+function saveBills(bills){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(bills)
+    );
+
+}
+
+
+function nextInvoice(){
+
+    const bills =
+        getBills();
+
+
+    let max =
+        1048;
+
+
+    bills.forEach(
+        bill=>{
+
+            max =
+                Math.max(
+                    max,
+                    Number(
+                        bill.invoiceNo
+                    ) || 0
+                );
+
+        }
+    );
+
+
+    return max + 1;
+
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+function addProduct(){
+
+    products.push({
+
+        description:"Electric Scooty",
+
+        brand:"",
+
+        model:"",
+
+        colour:"",
+
+        battery:"",
+
+        motorPower:"",
+
+        chassisNo:"",
+
+        batteryNo:"",
+
+        motorNo:"",
+
+        hsn:"871160",
+
+        qty:1,
+
+        rate:0
+
+    });
+
+
+    renderProducts();
+
+
+    showToast(
+        "A new product section has been added.",
+        "success",
+        "Product Added"
+    );
+
+}
+
+
+function removeProduct(index){
+
+    if(products.length <= 1){
+
+        showToast(
+            "At least one product is required.",
+            "warning"
+        );
+
+        return;
+
+    }
+
+
+    products.splice(
+        index,
+        1
+    );
+
+
+    renderProducts();
+
+
+    showToast(
+        "Product removed.",
+        "info"
+    );
+
+}
+
+
+function renderProducts(){
+
+    const container =
+        $("products");
+
+
+    container.innerHTML =
+        products.map(
+            (p,i)=>`
+
+            <div
+                class="goods-card"
+                data-product="${i}">
+
+                <div class="goods-title">
+
+                    <strong>
+                        ⚡ Goods / Scooty #${i+1}
+                    </strong>
+
+                    <span class="goods-badge">
+                        ELECTRIC VEHICLE
+                    </span>
+
+                </div>
+
+
+                <div class="goods-grid">
+
+
+                    <div class="field">
+
+                        <label>
+                            Description *
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.description
+                            )}"
+                            placeholder="Electric Scooty"
+                            oninput="
+                            products[${i}].description=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Brand
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.brand
+                            )}"
+                            placeholder="e.g. Ola, TVS, Hero"
+                            oninput="
+                            products[${i}].brand=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Model
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.model
+                            )}"
+                            placeholder="Model name"
+                            oninput="
+                            products[${i}].model=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Colour
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.colour
+                            )}"
+                            placeholder="Vehicle colour"
+                            oninput="
+                            products[${i}].colour=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Battery Capacity
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.battery
+                            )}"
+                            placeholder="e.g. 3.2 kWh"
+                            oninput="
+                            products[${i}].battery=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Motor Power
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.motorPower
+                            )}"
+                            placeholder="e.g. 2500 W"
+                            oninput="
+                            products[${i}].motorPower=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Chassis / Frame No.
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.chassisNo
+                            )}"
+                            placeholder="Vehicle chassis number"
+                            oninput="
+                            products[${i}].chassisNo=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Battery No.
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.batteryNo
+                            )}"
+                            placeholder="Battery serial number"
+                            oninput="
+                            products[${i}].batteryNo=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Motor No.
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.motorNo
+                            )}"
+                            placeholder="Motor serial number"
+                            oninput="
+                            products[${i}].motorNo=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            HSN / SAC *
+                        </label>
+
+                        <input
+                            value="${escapeHTML(
+                                p.hsn
+                            )}"
+                            placeholder="HSN code"
+                            oninput="
+                            products[${i}].hsn=this.value
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Quantity *
+                        </label>
+
+                        <input
+                            type="number"
+                            min="1"
+                            value="${p.qty}"
+                            oninput="
+                            products[${i}].qty=+this.value||0;
+                            updateProductAmount(${i})
+                            ">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Rate / Unit ₹ *
+                        </label>
+
+                        <input
+                            type="number"
+                            min="0"
+                            step=".01"
+                            value="${p.rate}"
+                            oninput="
+                            products[${i}].rate=+this.value||0;
+                            updateProductAmount(${i})
+                            ">
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="amount-box">
+
+                    <span>
+                        Product Amount
+                    </span>
+
+                    <strong
+                        id="amount-${i}">
+
+                        ${rupee(
+                            p.qty * p.rate
+                        )}
+
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="remove-product">
+
+                    ${
+                        products.length > 1
+
+                        ?
+
+                        `<button
+                            type="button"
+                            class="red"
+                            onclick="
+                            removeProduct(${i})
+                            ">
+
+                            🗑 Remove Product
+
+                        </button>`
+
+                        :
+
+                        ""
+
+                    }
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+function updateProductAmount(i){
+
+    const p =
+        products[i];
+
+
+    const amount =
+        Number(p.qty || 0) *
+        Number(p.rate || 0);
+
+
+    const element =
+        $(`amount-${i}`);
+
+
+    if(element){
+
+        element.textContent =
+            rupee(amount);
+
+    }
+
+}
+
+
+/* =========================================================
+   COLLECT BILL
+========================================================= */
+
+function collectBill(){
+
+    return {
+
+        invoiceNo:
+            $("invoiceNo").value,
+
+        date:
+            $("billDate").value,
+
+        poNo:
+            $("poNo").value,
+
+        place:
+            $("place").value,
+
+        customerName:
+            $("customerName").value.trim(),
+
+        customerMobile:
+            $("customerMobile").value.trim(),
+
+        customerGSTIN:
+            $("customerGSTIN").value.trim(),
+
+        customerAddress:
+            $("customerAddress").value.trim(),
+
+        customerState:
+            $("customerState").value,
+
+        stateCode:
+            $("stateCode").value,
+
+        gst:
+            $("gst").value,
+
+        discount:
+            $("discount").value,
+
+        taxType:
+            $("taxType").value,
+
+        notes:
+            $("notes").value,
+
+        products:
+            JSON.parse(
+                JSON.stringify(
+                    products
+                )
+            )
+
+    };
+
+}
+
+
+/* =========================================================
+   CALCULATION
+========================================================= */
+
+function calculate(bill){
+
+    const subtotal =
+        bill.products.reduce(
+            (sum,p)=>
+                sum +
+                (
+                    Number(p.qty || 0) *
+                    Number(p.rate || 0)
+                ),
+            0
+        );
+
+
+    const discount =
+        Number(
+            bill.discount || 0
+        );
+
+
+    const taxable =
+        Math.max(
+            0,
+            subtotal - discount
+        );
+
+
+    const gst =
+        Number(
+            bill.gst || 0
+        );
+
+
+    const tax =
+        taxable *
+        gst /
+        100;
+
+
+    return {
+
+        subtotal,
+
+        discount,
+
+        taxable,
+
+        gst,
+
+        tax,
+
+        total:
+            taxable + tax
+
+    };
+
+}
+
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+function validateBill(bill){
+
+    if(!bill.customerName){
+
+        showToast(
+            "Please enter the customer's full name.",
+            "error",
+            "Customer Name Required"
+        );
+
+        $("customerName").focus();
+
+        return false;
+
+    }
+
+
+    if(
+        bill.customerMobile &&
+        !/^[0-9]{10}$/.test(
+            bill.customerMobile
+        )
+    ){
+
+        showToast(
+            "Mobile number must contain exactly 10 digits.",
+            "error",
+            "Invalid Mobile Number"
+        );
+
+        $("customerMobile").focus();
+
+        return false;
+
+    }
+
+
+    if(!bill.customerState){
+
+        showToast(
+            "Please select the customer's state.",
+            "warning",
+            "State Required"
+        );
+
+        $("customerState").focus();
+
+        return false;
+
+    }
+
+
+    if(!bill.date){
+
+        showToast(
+            "Please select the bill date.",
+            "warning",
+            "Date Required"
+        );
+
+        return false;
+
+    }
+
+
+    for(
+        let i=0;
+        i<bill.products.length;
+        i++
+    ){
+
+        const p =
+            bill.products[i];
+
+
+        if(!p.description.trim()){
+
+            showToast(
+                `Please enter the description for product #${i+1}.`,
+                "error",
+                "Product Details Required"
+            );
+
+            return false;
+
+        }
+
+
+        if(!p.hsn.trim()){
+
+            showToast(
+                `Please enter the HSN code for product #${i+1}.`,
+                "error",
+                "HSN Required"
+            );
+
+            return false;
+
+        }
+
+
+        if(
+            Number(p.qty) <= 0
+        ){
+
+            showToast(
+                `Quantity for product #${i+1} must be at least 1.`,
+                "warning",
+                "Invalid Quantity"
+            );
+
+            return false;
+
+        }
+
+
+        if(
+            Number(p.rate) <= 0
+        ){
+
+            showToast(
+                `Please enter the selling rate for product #${i+1}.`,
+                "warning",
+                "Rate Required"
+            );
+
+            return false;
+
+        }
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   SUBMIT BILL
+========================================================= */
+
+function submitBill(){
+
+    const bill =
+        collectBill();
+
+
+    if(
+        !validateBill(bill)
+    )
+        return;
+
+
+    const bills =
+        getBills();
+
+
+    const index =
+        bills.findIndex(
+            b =>
+            String(b.invoiceNo) ===
+            String(bill.invoiceNo)
+        );
+
+
+    if(index >= 0){
+
+        bill.id =
+            bills[index].id;
+
+        bill.createdAt =
+            bills[index].createdAt;
+
+        bill.updatedAt =
+            new Date().toISOString();
+
+        bills[index] =
+            bill;
+
+    }
+    else{
+
+        bill.id =
+            Date.now().toString();
+
+        bill.createdAt =
+            new Date().toISOString();
+
+        bill.updatedAt =
+            new Date().toISOString();
+
+        bills.unshift(
+            bill
+        );
+
+    }
+
+
+    saveBills(bills);
+
+
+    showToast(
+        `Invoice #${bill.invoiceNo} has been saved successfully.`,
+        "success",
+        "Bill Saved ✓"
+    );
+
+
+    setTimeout(
+        ()=>{
+            openPreview(
+                bill
+            );
+        },
+        450
+    );
+
+}
+
+
+/* =========================================================
+   NUMBER TO WORDS
+========================================================= */
+
+const ones=[
+
+    "",
+    "One",
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Eleven",
+    "Twelve",
+    "Thirteen",
+    "Fourteen",
+    "Fifteen",
+    "Sixteen",
+    "Seventeen",
+    "Eighteen",
+    "Nineteen"
+
+];
+
+
+const tens=[
+
+    "",
+    "",
+    "Twenty",
+    "Thirty",
+    "Forty",
+    "Fifty",
+    "Sixty",
+    "Seventy",
+    "Eighty",
+    "Ninety"
+
+];
+
+
+function twoDigitWords(n){
+
+    if(n < 20)
+        return ones[n];
+
+    return (
+        tens[
+            Math.floor(n/10)
+        ]
+        +
+        (
+            n%10
+            ?
+            " " +
+            ones[n%10]
+            :
+            ""
+        )
+    );
+
+}
+
+
+function underThousand(n){
+
+    let result="";
+
+
+    if(n >= 100){
+
+        result +=
+            ones[
+                Math.floor(n/100)
+            ]
+            +
+            " Hundred";
+
+
+        n %= 100;
+
+
+        if(n)
+            result += " ";
+
+    }
+
+
+    if(n)
+        result +=
+            twoDigitWords(n);
+
+
+    return result;
+
+}
+
+
+function numberToWords(amount){
+
+    amount =
+        Math.round(
+            Number(amount || 0) *
+            100
+        ) / 100;
+
+
+    let rupees =
+        Math.floor(amount);
+
+
+    let paise =
+        Math.round(
+            (
+                amount -
+                rupees
+            ) * 100
+        );
+
+
+    if(
+        rupees === 0 &&
+        paise === 0
+    ){
+
+        return "Rupees Zero Only";
+
+    }
+
+
+    let result="";
+
+
+    if(
+        rupees >= 10000000
+    ){
+
+        result +=
+            underThousand(
+                Math.floor(
+                    rupees /
+                    10000000
+                )
+            )
+            +
+            " Crore ";
+
+        rupees %=
+            10000000;
+
+    }
+
+
+    if(
+        rupees >= 100000
+    ){
+
+        result +=
+            underThousand(
+                Math.floor(
+                    rupees /
+                    100000
+                )
+            )
+            +
+            " Lakh ";
+
+        rupees %=
+            100000;
+
+    }
+
+
+    if(
+        rupees >= 1000
+    ){
+
+        result +=
+            underThousand(
+                Math.floor(
+                    rupees /
+                    1000
+                )
+            )
+            +
+            " Thousand ";
+
+        rupees %=
+            1000;
+
+    }
+
+
+    if(rupees){
+
+        result +=
+            underThousand(
+                rupees
+            );
+
+    }
+
+
+    result =
+        result.trim()
+        +
+        " Rupees";
+
+
+    if(paise){
+
+        result +=
+            " and "
+            +
+            twoDigitWords(
+                paise
+            )
+            +
+            " Paise";
+
+    }
+
+
+    return result +
+        " Only";
+
+}
+
+
+/* =========================================================
+   INVOICE HTML
+========================================================= */
+
+function invoiceHTML(bill){
+
+    const calc =
+        calculate(bill);
+
+
+    const halfTax =
+        calc.tax / 2;
+
+
+    return `
+
+<div class="invoice">
+
+
+    <div class="invoice-header">
+
+
+        <div>
+
+            <b>
+                GSTIN:
+                06HTFPS8821C1ZH
+            </b>
+
+            <div style="margin-top:15px">
+                Electric Scooty Showroom
+            </div>
+
+        </div>
+
+
+        <div class="company">
+
+            <div>
+                TAX INVOICE
+            </div>
+
+            <strong>
+                KANORIA TRADERS
+            </strong>
+
+            <div>
+                Chillar, Rewari,
+                Haryana - 123401
+            </div>
+
+            <div>
+                Mob:
+                9991303968,
+                9466080258
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <div>
+                <b>Invoice No:</b>
+                ${escapeHTML(
+                    bill.invoiceNo
+                )}
+            </div>
+
+            <div style="margin-top:10px">
+                <b>Date:</b>
+                ${dateFormat(
+                    bill.date
+                )}
+            </div>
+
+            <div style="margin-top:10px">
+                <b>P.O. No:</b>
+                ${escapeHTML(
+                    bill.poNo || "—"
+                )}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="customer">
+
+
+        <div>
+
+            <div class="line">
+
+                <b>
+                    Name:
+                </b>
+
+                <span>
+                    ${escapeHTML(
+                        bill.customerName
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="line">
+
+                <b>
+                    Mobile:
+                </b>
+
+                <span>
+                    ${escapeHTML(
+                        bill.customerMobile ||
+                        "—"
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="line">
+
+                <b>
+                    Address:
+                </b>
+
+                <span>
+                    ${escapeHTML(
+                        bill.customerAddress ||
+                        "—"
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="line">
+
+                <b>
+                    GSTIN:
+                </b>
+
+                <span>
+                    ${escapeHTML(
+                        bill.customerGSTIN ||
+                        "—"
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="line">
+
+                <b>
+                    State:
+                </b>
+
+                <span>
+                    ${escapeHTML(
+                        bill.customerState
+                    )}
+                </span>
+
+                <b>
+                    Code:
+                </b>
+
+                <span>
+                    ${escapeHTML(
+                        bill.stateCode
+                    )}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <div class="line">
+
+                <b>
+                    Place of Supply:
+                </b>
+
+                <span>
+                    ${escapeHTML(
+                        bill.place
+                    )}
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    S.No.
+                </th>
+
+                <th>
+                    Description of Goods
+                </th>
+
+                <th>
+                    HSN/SAC
+                </th>
+
+                <th>
+                    Qty
+                </th>
+
+                <th>
+                    Rate
+                </th>
+
+                <th>
+                    Amount
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+
+        ${
+            bill.products.map(
+                (p,i)=>`
+
+<tr>
+
+<td class="center">
+${i+1}
+</td>
+
+
+<td>
+
+<b>
+${escapeHTML(
+    p.description
+)}
+</b>
+
+
+<div style="
+font-size:9px;
+margin-top:5px;
+line-height:1.5;
+">
+
+${
+    p.brand
+    ?
+    `Brand: ${escapeHTML(p.brand)}<br>`
+    :
+    ""
+}
+
+${
+    p.model
+    ?
+    `Model: ${escapeHTML(p.model)}<br>`
+    :
+    ""
+}
+
+${
+    p.colour
+    ?
+    `Colour: ${escapeHTML(p.colour)}<br>`
+    :
+    ""
+}
+
+${
+    p.battery
+    ?
+    `Battery: ${escapeHTML(p.battery)}<br>`
+    :
+    ""
+}
+
+${
+    p.motorPower
+    ?
+    `Motor: ${escapeHTML(p.motorPower)}<br>`
+    :
+    ""
+}
+
+${
+    p.chassisNo
+    ?
+    `Chassis: ${escapeHTML(p.chassisNo)}<br>`
+    :
+    ""
+}
+
+${
+    p.batteryNo
+    ?
+    `Battery No: ${escapeHTML(p.batteryNo)}<br>`
+    :
+    ""
+}
+
+${
+    p.motorNo
+    ?
+    `Motor No: ${escapeHTML(p.motorNo)}`
+    :
+    ""
+}
+
+</div>
+
+</td>
+
+
+<td class="center">
+${escapeHTML(p.hsn)}
+</td>
+
+
+<td class="center">
+${p.qty}
+</td>
+
+
+<td class="right">
+${rupee(p.rate)}
+</td>
+
+
+<td class="right">
+${rupee(
+    p.qty * p.rate
+)}
+</td>
+
+</tr>
+
+`
+            ).join("")
+        }
+
+
+        <tr class="product-space">
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+        </tr>
+
+
+        </tbody>
+
+    </table>
+
+
+    <div class="summary">
+
+
+        <div class="amount-words">
+
+            <b>
+                Amount in Words:
+            </b>
+
+            <div
+                style="
+                margin-top:10px;
+                font-weight:bold;
+                ">
+
+                ${numberToWords(
+                    calc.total
+                )}
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <table>
+
+
+                <tr>
+
+                    <td>
+                        Subtotal
+                    </td>
+
+                    <td class="right">
+                        ${rupee(
+                            calc.subtotal
+                        )}
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Discount
+                    </td>
+
+                    <td class="right">
+                        ${rupee(
+                            calc.discount
+                        )}
+                    </td>
+
+                </tr>
+
+
+                ${
+                    bill.taxType === "intra"
+
+                    ?
+
+                    `
+
+                    <tr>
+
+                        <td>
+                            CGST
+                            ${(calc.gst/2).toFixed(2)}%
+                        </td>
+
+                        <td class="right">
+                            ${rupee(
+                                halfTax
+                            )}
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            SGST
+                            ${(calc.gst/2).toFixed(2)}%
+                        </td>
+
+                        <td class="right">
+                            ${rupee(
+                                halfTax
+                            )}
+                        </td>
+
+                    </tr>
+
+                    `
+
+                    :
+
+                    `
+
+                    <tr>
+
+                        <td>
+                            IGST
+                            ${calc.gst}%
+                        </td>
+
+                        <td class="right">
+                            ${rupee(
+                                calc.tax
+                            )}
+                        </td>
+
+                    </tr>
+
+                    `
+                }
+
+
+                <tr>
+
+                    <td>
+                        <b>
+                            Grand Total
+                        </b>
+                    </td>
+
+                    <td class="right">
+
+                        <b>
+                            ${rupee(
+                                calc.total
+                            )}
+                        </b>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="terms">
+
+
+        <div class="terms-text">
+
+            <b>
+                Terms & Conditions
+            </b>
+
+            <div style="margin-top:7px">
+
+                ${escapeHTML(
+                    bill.notes || ""
+                ).replace(
+                    /\n/g,
+                    "<br>"
+                )}
+
+            </div>
+
+        </div>
+
+
+        <div class="signature">
+
+            <b>
+                For KANORIA TRADERS
+            </b>
+
+            <div class="signature-space"></div>
+
+            <b>
+                Authorised Signatory
+            </b>
+
+        </div>
+
+    </div>
+
+
+    <div class="invoice-footer">
+
+        Thank you for choosing
+        Kanoria Traders
+        • Electric Scooty Sales & Service
+
+    </div>
+
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+function openPreview(bill){
+
+    $("previewContent").innerHTML =
+        invoiceHTML(
+            bill
+        );
+
+
+    $("previewModal")
+        .classList
+        .add("show");
+
+}
+
+
+function closePreview(){
+
+    $("previewModal")
+        .classList
+        .remove("show");
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+function printBill(){
+
+    const content =
+        $("previewContent")
+        .innerHTML;
+
+
+    const win =
+        window.open(
+            "",
+            "_blank"
+        );
+
+
+    if(!win){
+
+        showToast(
+            "Please allow pop-ups in your browser to print the invoice.",
+            "error",
+            "Print Window Blocked"
+        );
+
+        return;
+
+    }
+
+
+    win.document.write(`
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+Kanoria Traders Invoice
+</title>
+
+<style>
+
+@page{
+    size:A4;
+    margin:7mm;
+}
+
+body{
+    margin:0;
+    font-family:Arial;
+    color:#111;
+}
+
+.invoice{
+    width:210mm;
+    min-height:297mm;
+    border:1px solid #111;
+}
+
+.invoice-header{
+    display:grid;
+    grid-template-columns:
+    1fr 1.5fr 1fr;
+    border-bottom:1px solid #111;
+}
+
+.invoice-header > div{
+    padding:9px;
+    min-height:90px;
+    border-right:1px solid #111;
+    font-size:11px;
+}
+
+.invoice-header > div:last-child{
+    border-right:0;
+}
+
+.company{
+    text-align:center;
+}
+
+.company strong{
+    display:block;
+    font-size:22px;
+    margin:12px 0 5px;
+}
+
+.customer{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    border-bottom:1px solid #111;
+}
+
+.customer > div{
+    padding:9px;
+    min-height:130px;
+    border-right:1px solid #111;
+    font-size:11px;
+}
+
+.line{
+    display:flex;
+    gap:8px;
+    margin:6px 0;
+}
+
+.line b{
+    min-width:90px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:10.5px;
+}
+
+th,td{
+    border:1px solid #111;
+    padding:7px;
+}
+
+th{
+    background:#f0f2f5;
+}
+
+.center{
+    text-align:center;
+}
+
+.right{
+    text-align:right;
+}
+
+.product-space td{
+    height:120px;
+}
+
+.summary{
+    display:grid;
+    grid-template-columns:1.35fr .65fr;
+}
+
+.amount-words{
+    padding:10px;
+    min-height:115px;
+    border-right:1px solid #111;
+    font-size:11px;
+}
+
+.terms{
+    display:grid;
+    grid-template-columns:1.25fr .75fr;
+    border-top:1px solid #111;
+}
+
+.terms-text{
+    padding:10px;
+    font-size:10px;
+    line-height:1.6;
+}
+
+.signature{
+    border-left:1px solid #111;
+    padding:10px;
+    text-align:center;
+}
+
+.signature-space{
+    height:65px;
+}
+
+.invoice-footer{
+    border-top:1px solid #111;
+    text-align:center;
+    padding:7px;
+    font-size:9px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+${content}
+
+<script>
+
+window.onload=function(){
+
+    window.print();
+
+};
+
+<\/script>
+
+</body>
+
+</html>
+
+`);
+
+
+    win.document.close();
+
+}
+
+
+/* =========================================================
+   SAVED BILLS
+========================================================= */
+
+function openSavedBills(){
+
+    renderSavedBills();
+
+    $("savedModal")
+        .classList
+        .add("show");
+
+}
+
+
+function closeSavedBills(){
+
+    $("savedModal")
+        .classList
+        .remove("show");
+
+}
+
+
+function renderSavedBills(){
+
+    const bills =
+        getBills();
+
+
+    const search =
+        (
+            $("searchBill").value ||
+            ""
+        )
+        .toLowerCase();
+
+
+    const from =
+        $("fromDate").value;
+
+
+    const to =
+        $("toDate").value;
+
+
+    const filtered =
+        bills.filter(
+            bill=>{
+
+                const productText =
+                    bill.products
+                    .map(
+                        p =>
+                        `
+                        ${p.description}
+                        ${p.brand}
+                        ${p.model}
+                        ${p.chassisNo}
+                        `
+                    )
+                    .join(" ");
+
+
+                const text =
+                    (
+                        bill.invoiceNo +
+                        " " +
+                        bill.customerName +
+                        " " +
+                        bill.customerMobile +
+                        " " +
+                        productText
+                    )
+                    .toLowerCase();
+
+
+                if(
+                    search &&
+                    !text.includes(
+                        search
+                    )
+                )
+                    return false;
+
+
+                if(
+                    from &&
+                    bill.date < from
+                )
+                    return false;
+
+
+                if(
+                    to &&
+                    bill.date > to
+                )
+                    return false;
+
+
+                return true;
+
+            }
+        );
+
+
+    const table =
+        $("savedBillsTable");
+
+
+    if(!filtered.length){
+
+        table.innerHTML = `
+
+        <tr>
+
+            <td
+                colspan="7"
+                style="
+                text-align:center;
+                padding:40px;
+                color:#667085;
+                ">
+
+                No saved bills found.
+
+            </td>
+
+        </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    table.innerHTML =
+        filtered.map(
+            bill=>{
+
+                const total =
+                    calculate(
+                        bill
+                    ).total;
+
+
+                const product =
+                    bill.products
+                    .map(
+                        p =>
+                        p.description
+                    )
+                    .join(", ");
+
+
+                return `
+
+<tr>
+
+<td>
+<b>
+${escapeHTML(
+    bill.invoiceNo
+)}
+</b>
+</td>
+
+
+<td>
+${dateFormat(
+    bill.date
+)}
+</td>
+
+
+<td>
+${escapeHTML(
+    bill.customerName
+)}
+</td>
+
+
+<td>
+${escapeHTML(
+    bill.customerMobile ||
+    "—"
+)}
+</td>
+
+
+<td>
+${escapeHTML(
+    product
+)}
+</td>
+
+
+<td>
+<b>
+${rupee(total)}
+</b>
+</td>
+
+
+<td>
+
+<button
+    class="green"
+    style="padding:7px"
+    onclick="
+    previewSavedBill(
+        '${bill.id}'
+    )">
+
+    View
+
+</button>
+
+
+<button
+    class="red"
+    style="padding:7px"
+    onclick="
+    deleteBill(
+        '${bill.id}'
+    )">
+
+    Delete
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+            }
+        ).join("");
+
+}
+
+
+/* =========================================================
+   SAVED PREVIEW
+========================================================= */
+
+function previewSavedBill(id){
+
+    const bill =
+        getBills().find(
+            b =>
+            String(b.id) ===
+            String(id)
+        );
+
+
+    if(!bill){
+
+        showToast(
+            "This bill could not be found.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    closeSavedBills();
+
+    openPreview(
+        bill
+    );
+
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+function deleteBill(id){
+
+    const bill =
+        getBills().find(
+            b =>
+            String(b.id) ===
+            String(id)
+        );
+
+
+    if(!bill)
+        return;
+
+
+    if(
+        !confirm(
+            "Delete invoice " +
+            bill.invoiceNo +
+            "?"
+        )
+    )
+        return;
+
+
+    const remaining =
+        getBills().filter(
+            b =>
+            String(b.id) !==
+            String(id)
+        );
+
+
+    saveBills(
+        remaining
+    );
+
+
+    renderSavedBills();
+
+
+    showToast(
+        `Invoice #${bill.invoiceNo} has been deleted.`,
+        "success",
+        "Bill Deleted"
+    );
+
+}
+
+
+/* =========================================================
+   NEW BILL
+========================================================= */
+
+function newBill(){
+
+    $("invoiceNo").value =
+        nextInvoice();
+
+
+    $("billDate").value =
+        today();
+
+
+    $("poNo").value="";
+
+    $("customerName").value="";
+
+    $("customerMobile").value="";
+
+    $("customerGSTIN").value="";
+
+    $("customerAddress").value="";
+
+    $("customerState").value=
+        "Haryana";
+
+    $("stateCode").value=
+        "06";
+
+    $("stateCodeBadge").textContent=
+        "Code: 06";
+
+    $("gst").value="5";
+
+    $("discount").value="0";
+
+    $("taxType").value=
+        "intra";
+
+
+    products=[
+
+        {
+
+            description:
+                "Electric Scooty",
+
+            brand:"",
+
+            model:"",
+
+            colour:"",
+
+            battery:"",
+
+            motorPower:"",
+
+            chassisNo:"",
+
+            batteryNo:"",
+
+            motorNo:"",
+
+            hsn:"871160",
+
+            qty:1,
+
+            rate:0
+
+        }
+
+    ];
+
+
+    renderProducts();
+
+
+    closePreview();
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+
+    showToast(
+        "Ready for a new bill.",
+        "success",
+        "New Bill"
+    );
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+function init(){
+
+    loadStates();
+
+
+    $("invoiceNo").value =
+        nextInvoice();
+
+
+    $("billDate").value =
+        today();
+
+
+    products=[
+
+        {
+
+            description:
+                "Electric Scooty",
+
+            brand:"",
+
+            model:"",
+
+            colour:"",
+
+            battery:"",
+
+            motorPower:"",
+
+            chassisNo:"",
+
+            batteryNo:"",
+
+            motorNo:"",
+
+            hsn:"871160",
+
+            qty:1,
+
+            rate:0
+
+        }
+
+    ];
+
+
+    renderProducts();
+
+}
+
+
+window.addEventListener(
+    "load",
+    init
+);
+
+</script>
+
+</body>
+</html>
